@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/",
+      "destination": "/beerolympics-master/index.html"
+    },
+    {
+      "source": "/:path*",
+      "destination": "/beerolympics-master/:path*"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ beerolympics-master/media/alcohol.png
 beerolympics-master/media/halloffame/*.jpg
 beerolympics-master/node_modules/
 beerbackend-master/node_modules/
+node_modules/
 beerbackend-master/.env
 .env
 .DS_Store

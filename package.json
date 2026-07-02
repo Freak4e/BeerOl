@@ -1,0 +1,15 @@
+{
+  "name": "beerol",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node beerbackend-master/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.18.1",
+    "nodemailer": "^8.0.1",
+    "pg": "^8.19.0"
+  }
+}

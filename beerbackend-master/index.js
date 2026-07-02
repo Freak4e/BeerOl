@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
@@ -309,7 +310,11 @@ app.post('/', async (req, res) => {
 // ==================
 // START SERVER
 // ==================
-const port = process.env.PORT || 5000;
-app.listen(port, () => {
-	console.log(`Server started on port: ${port}`);
-});
+if (require.main === module) {
+	const port = process.env.PORT || 5000;
+	app.listen(port, () => {
+		console.log(`Server started on port: ${port}`);
+	});
+}
+
+module.exports = app;

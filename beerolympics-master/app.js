@@ -1,4 +1,4 @@
-const BACKEND_URL = 'https://beerolympics-backend.onrender.com';
+const BACKEND_URL = '/api';
 
 document.addEventListener('DOMContentLoaded', () => {
 	initModals();

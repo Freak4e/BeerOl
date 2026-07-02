@@ -43,4 +43,10 @@ Local `.env` files are ignored and should not be committed.
 
 ## Deploy Notes
 
-The frontend assets have been optimized for a deploy-safe size. The backend needs a PostgreSQL database and email credentials configured on the hosting provider.
+This repo is set up as one Vercel project:
+
+- static frontend files are served from `beerolympics-master/`
+- backend API is served from `/api`
+- frontend code calls `/api`, not a separate Render backend
+
+Set the required environment variables in the Vercel project dashboard before deploying. The frontend assets have been optimized for a deploy-safe size.
