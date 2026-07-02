@@ -33,7 +33,7 @@ The backend uses:
 Required production environment variables:
 
 ```text
-DATABASE_URL=
+DATABASE_URL=postgresql://postgres.pvzxsfblhnugduyqnixd:YOUR-PASSWORD@aws-0-eu-west-1.pooler.supabase.com:5432/postgres
 MAIL_USER=
 MAIL_PASS=
 ORGANIZER_EMAIL=
