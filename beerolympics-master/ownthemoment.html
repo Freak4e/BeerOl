@@ -58,10 +58,26 @@
 		</section>
 
 		<section class="moment-submissions">
-			<h2>Photo Submissions</h2>
+			<div class="moment-submissions-header">
+				<h2>Photo Submissions</h2>
+				<button class="add-photo-btn" type="button" onclick="showAddPhotoModal()">Add Photo</button>
+			</div>
 			<div class="moment-grid" id="momentGrid"></div>
 		</section>
 	</main>
+
+	<div class="add-photo-modal" id="addPhotoModal">
+		<div class="add-photo-content">
+			<button class="add-photo-close" type="button" onclick="hideAddPhotoModal()">x</button>
+			<h2>Add Your Photo</h2>
+			<p>This preview adds the photo on this device. Replace placeholders with final submissions before publishing.</p>
+			<form id="addPhotoForm">
+				<input type="text" id="photoTitle" placeholder="Submission title" required />
+				<input type="file" id="photoFile" accept="image/*" required />
+				<button class="add-photo-submit" type="submit">Add Photo</button>
+			</form>
+		</div>
+	</div>
 
 	<footer>
 		<div class="container">
@@ -87,12 +103,16 @@
 
 		const votedKey = 'beerOlympicsMomentVotes';
 		const fallbackLikesKey = 'beerOlympicsMomentLikes';
+		const localMomentsKey = 'beerOlympicsLocalMomentPhotos';
 		const voted = JSON.parse(localStorage.getItem(votedKey) || '[]');
 		let fallbackLikes = JSON.parse(localStorage.getItem(fallbackLikesKey) || '{}');
+		let localMoments = JSON.parse(localStorage.getItem(localMomentsKey) || '[]');
 
 		function renderMoments(likes = {}) {
 			const grid = document.getElementById('momentGrid');
-			grid.innerHTML = moments.map(item => {
+			const allMoments = localMoments.concat(moments);
+
+			grid.innerHTML = allMoments.map(item => {
 				const liked = voted.includes(item.id);
 				const count = likes[item.id] || fallbackLikes[item.id] || 0;
 				return `
@@ -141,6 +161,40 @@
 				renderMoments();
 			}
 		}
+
+		function showAddPhotoModal() {
+			document.getElementById('addPhotoModal').classList.add('active');
+		}
+
+		function hideAddPhotoModal() {
+			document.getElementById('addPhotoModal').classList.remove('active');
+		}
+
+		document.getElementById('addPhotoModal').addEventListener('click', event => {
+			if (event.target.id === 'addPhotoModal') hideAddPhotoModal();
+		});
+
+		document.getElementById('addPhotoForm').addEventListener('submit', event => {
+			event.preventDefault();
+
+			const title = document.getElementById('photoTitle').value.trim() || 'New Submission';
+			const file = document.getElementById('photoFile').files[0];
+			if (!file) return;
+
+			const reader = new FileReader();
+			reader.onload = () => {
+				localMoments.unshift({
+					id: `local-${Date.now()}`,
+					title,
+					img: reader.result
+				});
+				localStorage.setItem(localMomentsKey, JSON.stringify(localMoments));
+				renderMoments();
+				event.target.reset();
+				hideAddPhotoModal();
+			};
+			reader.readAsDataURL(file);
+		});
 
 		renderMoments();
 		loadMomentLikes();

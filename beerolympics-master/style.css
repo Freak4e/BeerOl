@@ -2093,9 +2093,31 @@ margin:0 auto;
 text-align:center;
 }
 
+.moment-submissions-header{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:18px;
+margin-bottom:28px;
+}
+
 .moment-submissions h2{
 font-size:30px;
-margin-bottom:28px;
+}
+
+.add-photo-btn,
+.add-photo-submit{
+background:#ffcc00;
+border:none;
+border-radius:8px;
+padding:12px 22px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.add-photo-btn:hover,
+.add-photo-submit:hover{
+background:#e6b800;
 }
 
 .moment-grid{
@@ -2144,6 +2166,64 @@ padding:8px 16px;
 border-radius:999px;
 font-weight:bold;
 margin-bottom:18px;
+}
+
+.add-photo-modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999999;
+padding:24px;
+}
+
+.add-photo-modal.active{
+display:flex;
+}
+
+.add-photo-content{
+background:white;
+width:min(460px,100%);
+border:3px solid #ffcc00;
+border-radius:8px;
+padding:30px;
+position:relative;
+text-align:center;
+box-shadow:0 14px 34px rgba(0,0,0,0.25);
+}
+
+.add-photo-close{
+position:absolute;
+top:10px;
+right:14px;
+border:none;
+background:none;
+font-size:28px;
+cursor:pointer;
+}
+
+.add-photo-content h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.add-photo-content p{
+line-height:1.5;
+margin-bottom:20px;
+}
+
+#addPhotoForm{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+#addPhotoForm input{
+padding:12px;
+border:1px solid #ccc;
+border-radius:6px;
 }
 
 .like-btn{
