@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Beer Olympics | Brackets</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="brackets-page">
+
+<nav class="navbar-wrapper scrolled-nav">
+<div class="container navbar">
+
+<div class="logo">
+<a href="./index.html">
+<img class="logo" src="./media/logo.png">
+</a>
+</div>
+
+<div class="nav-links">
+<a class="link" href="./index.html#about">About</a>
+<a class="link" href="./index.html#game1">Games</a>
+<a class="link" href="./tickets.html">Tickets</a>
+<a class="link" href="./t-shirts.html">T-Shirts</a>
+<a class="link" href="./halloffame.html">Hall of Fame</a>
+<a class="link" href="./gallery.html">Gallery</a>
+<a class="link" href="./index.html#contact">Contact</a>
+</div>
+
+</div>
+</nav>
+
+<div id="matchModal" class="match-modal">
+
+  <div class="match-modal-content">
+
+    <span class="close">&times;</span>
+
+    <h2>Match Info</h2>
+
+    <div class="match-row">
+      <span id="modalTeam1"></span>
+      <input type="number" id="modalScore1">
+    </div>
+
+    <div class="match-row">
+      <span id="modalTeam2"></span>
+      <input type="number" id="modalScore2">
+    </div>
+
+  </div>
+
+</div>
+
+<main class="brackets-container">
+
+<h1 class="brackets-title">Beer Olympics</h1>
+<h2 class="brackets-subtitle">Brackets</h2>
+
+<section class="bracket-year">
+<h3>2025 • 48 Teams</h3>
+
+<div class="bracket-layout">
+
+<div class="bracket-left">
+
+<div class="round">
+
+<div class="match"><div class="team winner-round" data-match="m1" data-team1="Aerodromci" data-team2="TBD1" data-score1="6" data-score2="3">Aerodromci</div><div class="team">TBD1</div></div>
+<div class="match"><div class="team" data-match="m2" data-team3="Maruli" data-team4="Smooth 0.33" data-score3="2" data-score4="6">Maruli</div><div class="team winner-round" data-match="m2" data-team3="Maruli" data-team4="Smooth 0.33" data-score3="2" data-score4="6">Smooth 0.33</div></div>
+<div class="match"><div class="team" data-match="m3" data-team5="Docimis" data-team6="Ministri" data-score5="1" data-score6="6">Docimis</div><div class="team winner-round" data-match="m3" data-team5="Docimis" data-team6="Ministri" data-score5="1" data-score6="6">Ministri</div></div>
+<div class="match"><div class="team winner-round" data-match="m4" data-team7="Wudy Sped" data-team8="Sheikh" data-score7="6" data-score8="4">Wudy Sped</div><div class="team" data-match="m4" data-team7="Wudy Sped" data-team8="Sheikh" data-score7="6" data-score8="4">Sheikh</div></div>
+<div class="match"><div class="team winner-round" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Lux Duo</div><div class="team" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Kusi Mazhinja</div></div>
+<div class="match"><div class="team" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="2" data-score12="6">Smooth Operators</div><div class="team winner-round" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="0" data-score12="6">Milf Hunters</div></div>
+<div class="match"><div class="team" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">Marlboro Touch</div><div class="team winner-round" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">INMB</div></div>
+<div class="match"><div class="team" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">MiNi</div><div class="team winner-round" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">NIP</div></div>
+<div class="match"><div class="team winner-round" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Lux Duo</div><div class="team" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Kusi Mazhinja</div></div>
+<div class="match"><div class="team" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="2" data-score12="6">Smooth Operators</div><div class="team winner-round" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="0" data-score12="6">Milf Hunters</div></div>
+<div class="match"><div class="team" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">Marlboro Touch</div><div class="team winner-round" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">INMB</div></div>
+<div class="match"><div class="team" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">MiNi</div><div class="team winner-round" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">NIP</div></div>
+
+</div>
+
+<div class="round">
+<div class="match">
+  <div class="team winner-round">Aerodromci</div>
+  <div class="team">Smooth 0.33</div>
+</div>
+<div class="match">
+  <div class="team winner-round">Ministri</div>
+  <div class="team">Wudy Sped</div>
+</div>
+<div class="match">
+  <div class="team">Lux Duo</div>
+  <div class="team winner-round">Milf Hunters</div>
+</div>
+<div class="match">
+  <div class="team">INMB</div>
+  <div class="team winner-round">NIP</div>
+</div>
+<div class="match">
+  <div class="team">Lux Duo</div>
+  <div class="team winner-round">Milf Hunters</div>
+</div>
+<div class="match">
+  <div class="team">INMB</div>
+  <div class="team winner-round">NIP</div>
+</div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Aerodromci</div>
+        <div class="team winner-round">Ministri</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Milf Hunters</div>
+        <div class="team">NIP</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Milf Hunters</div>
+        <div class="team">NIP</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Ministri</div>
+        <div class="team">Milf Hunters</div>
+    </div>
+</div>
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Ministri</div>
+        <div class="team">Milf Hunters</div>
+    </div>
+</div>
+
+</div>
+
+<div class="bracket-center">
+
+<div class="final-container">
+
+<div class="finalist">
+    <div class="match">
+        <div class="team winner-round">Ministri</div>
+        <div class="team">Milf Hunters</div>
+    </div>
+</div>
+
+<img src="./media/download.png" class="final-trophy">
+
+<div class="finalist">
+    <div class="match">
+        <div class="team">Covecite</div>
+        <div class="team winner-round">Twisted</div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
+<div class="bracket-right">
+
+<div class="round">
+
+<div class="match"><div class="team">40 Burning Hot</div><div class="team winner-round">3PM2PP</div></div>
+<div class="match"><div class="team">Katja</div><div class="team winner-round">Twisted</div></div>
+<div class="match"><div class="team">FiBor</div><div class="team winner-round">TBD3</div></div>
+<div class="match"><div class="team">Situacija</div><div class="team winner-round">Escape</div></div>
+<div class="match"><div class="team winner-round">Chorba</div><div class="team">The Alchemists</div></div>
+<div class="match"><div class="team winner-round">Covecite</div><div class="team">E.S.O</div></div>
+<div class="match"><div class="team">GV-91</div><div class="team winner-round">Premier League Fantasy</div></div>
+<div class="match"><div class="team">Skinheads</div><div class="team winner-round">Yaponsky Jezs</div></div>
+<div class="match"><div class="team winner-round" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Lux Duo</div><div class="team" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Kusi Mazhinja</div></div>
+<div class="match"><div class="team" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="2" data-score12="6">Smooth Operators</div><div class="team winner-round" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="0" data-score12="6">Milf Hunters</div></div>
+<div class="match"><div class="team" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">Marlboro Touch</div><div class="team winner-round" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">INMB</div></div>
+<div class="match"><div class="team" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">MiNi</div><div class="team winner-round" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">NIP</div></div>
+
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Twisted</div>
+        <div class="team">3PM2PP</div>
+    </div>
+    <div class="match">
+        <div class="team">Escape</div>
+        <div class="team winner-round">TBD3</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Covecite</div>
+        <div class="team">Chorba</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Yaponsky Jezs</div>
+        <div class="team">Premier League Fantasy</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Covecite</div>
+        <div class="team">Chorba</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Yaponsky Jezs</div>
+        <div class="team">Premier League Fantasy</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">TBD3</div>
+        <div class="team winner-round">Twisted</div>
+    </div>
+    <div class="match">
+        <div class="team">Yaponsky Jezs</div>
+        <div class="team winner-round">Covecite</div>
+    </div>
+     <div class="match">
+        <div class="team">Yaponsky Jezs</div>
+        <div class="team winner-round">Covecite</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Covecite</div>
+        <div class="team winner-round">Twisted</div>
+    </div>
+</div>
+<div class="round">
+    <div class="match">
+        <div class="team">Covecite</div>
+        <div class="team winner-round">Twisted</div>
+    </div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- 2024 -->
+
+<section class="bracket-year">
+<h3>2024 • 32 Teams</h3>
+
+<div class="bracket-layout">
+
+<div class="bracket-left">
+
+<div class="round">
+
+<div class="match"><div class="team winner-round" data-match="m1" data-team1="Aerodromci" data-team2="TBD1" data-score1="6" data-score2="3">Aerodromci</div><div class="team">TBD1</div></div>
+<div class="match"><div class="team" data-match="m2" data-team3="Maruli" data-team4="Smooth 0.33" data-score3="2" data-score4="6">Maruli</div><div class="team winner-round" data-match="m2" data-team3="Maruli" data-team4="Smooth 0.33" data-score3="2" data-score4="6">Smooth 0.33</div></div>
+<div class="match"><div class="team" data-match="m3" data-team5="Docimis" data-team6="Ministri" data-score5="1" data-score6="6">Docimis</div><div class="team winner-round" data-match="m3" data-team5="Docimis" data-team6="Ministri" data-score5="1" data-score6="6">Ministri</div></div>
+<div class="match"><div class="team winner-round" data-match="m4" data-team7="Wudy Sped" data-team8="Sheikh" data-score7="6" data-score8="4">Wudy Sped</div><div class="team" data-match="m4" data-team7="Wudy Sped" data-team8="Sheikh" data-score7="6" data-score8="4">Sheikh</div></div>
+<div class="match"><div class="team winner-round" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Lux Duo</div><div class="team" data-match="m5" data-team10="Lux Duo" data-team9="Kusi Mazhinja" data-score10="6" data-score9="4">Kusi Mazhinja</div></div>
+<div class="match"><div class="team" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="2" data-score12="6">Smooth Operators</div><div class="team winner-round" data-match="m6" data-team11="Smooth Operators" data-team12="Milf Hunters" data-score11="0" data-score12="6">Milf Hunters</div></div>
+<div class="match"><div class="team" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">Marlboro Touch</div><div class="team winner-round" data-match="m7" data-team13="Marlboro Touch" data-team14="INMB" data-score13="5" data-score14="6">INMB</div></div>
+<div class="match"><div class="team" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">MiNi</div><div class="team winner-round" data-match="m8" data-team15="MiNi" data-team16="NIP" data-score15="3" data-score16="6">NIP</div></div>
+
+</div>
+
+<div class="round">
+<div class="match">
+  <div class="team winner-round">Aerodromci</div>
+  <div class="team">Smooth 0.33</div>
+</div>
+<div class="match">
+  <div class="team winner-round">Ministri</div>
+  <div class="team">Wudy Sped</div>
+</div>
+<div class="match">
+  <div class="team">Lux Duo</div>
+  <div class="team winner-round">Milf Hunters</div>
+</div>
+<div class="match">
+  <div class="team">INMB</div>
+  <div class="team winner-round">NIP</div>
+</div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Aerodromci</div>
+        <div class="team winner-round">Ministri</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Milf Hunters</div>
+        <div class="team">NIP</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Ministri</div>
+        <div class="team">Milf Hunters</div>
+    </div>
+</div>
+
+</div>
+
+<div class="bracket-center">
+
+<div class="final-container">
+
+<div class="team-box finalist top-team winner" data-team="Ministri">
+Ministri
+</div>
+
+<img src="./media/download.png" class="final-trophy">
+
+<div class="team-box finalist bottom-team" data-team="Twisted">
+Twisted
+</div>
+
+</div>
+
+</div>
+
+<div class="bracket-right">
+
+<div class="round">
+
+<div class="match"><div class="team">40 Burning Hot</div><div class="team winner-round">3PM2PP</div></div>
+<div class="match"><div class="team">Katja</div><div class="team winner-round">Twisted</div></div>
+<div class="match"><div class="team">FiBor</div><div class="team winner-round">TBD3</div></div>
+<div class="match"><div class="team">Situacija</div><div class="team winner-round">Escape</div></div>
+<div class="match"><div class="team winner-round">Chorba</div><div class="team">The Alchemists</div></div>
+<div class="match"><div class="team winner-round">Covecite</div><div class="team">E.S.O</div></div>
+<div class="match"><div class="team">GV-91</div><div class="team winner-round">Premier League Fantasy</div></div>
+<div class="match"><div class="team">Skinheads</div><div class="team winner-round">Yaponsky Jezs</div></div>
+
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Twisted</div>
+        <div class="team">3PM2PP</div>
+    </div>
+    <div class="match">
+        <div class="team">Escape</div>
+        <div class="team winner-round">TBD3</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Covecite</div>
+        <div class="team">Chorba</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Yaponsky Jezs</div>
+        <div class="team">Premier League Fantasy</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">TBD3</div>
+        <div class="team winner-round">Twisted</div>
+    </div>
+    <div class="match">
+        <div class="team">Yaponsky Jezs</div>
+        <div class="team winner-round">Covecite</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Covecite</div>
+        <div class="team winner-round">Twisted</div>
+    </div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 2023 -->
+
+<section class="bracket-year">
+<h3>2023 • 32 Teams</h3>
+
+<div class="bracket-layout">
+
+<div class="bracket-left">
+
+<div class="round">
+
+<div class="match"><div class="team winner-round" data-match="m1" data-team1="Vale&Eli" data-team2="Meto&Vilma" data-score1="6" data-score2="3">Vale & Eli</div><div class="team">Meto & Vilma</div></div>
+<div class="match"><div class="team" data-match="m2" data-team3="Kate&Anastasija" data-team4="Tijana&Meri" data-score3="2" data-score4="6">Kate & Anastasija</div><div class="team winner-round" data-match="m2" data-team3="Kate&Anastasija" data-team4="Tijana&Meri" data-score3="2" data-score4="6">Tijana & Meri</div></div>
+<div class="match"><div class="team" data-match="m3" data-team5="Nevena&David" data-team6="Eftim&Barbara" data-score5="1" data-score6="6">Nevena & David</div><div class="team winner-round" data-match="m3" data-team5="Nevena&David" data-team6="Eftim&Barbara" data-score5="1" data-score6="6">Eftim & Barbara</div></div>
+<div class="match"><div class="team winner-round" data-match="m4" data-team7="Martin&Ivan" data-team8="Klaudija&Magdalena" data-score7="6" data-score8="4">Martin & Ivan</div><div class="team" data-match="m4" data-team7="Martin&Ivan" data-team8="Klaudija&Magdalena" data-score7="6" data-score8="4">Klaudija & Magdalena</div></div>
+<div class="match"><div class="team winner-round" data-match="m5" data-team10="Bisera&Mila" data-team9="Zorica&Aleksandra" data-score10="6" data-score9="4">Bisera & Mila</div><div class="team" data-match="m5" data-team10="Bisera&Mila" data-team9="Zorica&Aleksandra" data-score10="6" data-score9="4">Zorica & Aleksandra</div></div>
+<div class="match"><div class="team" data-match="m6" data-team11="Luka&David" data-team12="Matej&Zorica" data-score11="2" data-score12="6">Luka & David</div><div class="team winner-round" data-match="m6" data-team11="Luka&David" data-team12="Matej&Zorica" data-score11="0" data-score12="6">Matej & Zorica</div></div>
+<div class="match"><div class="team" data-match="m7" data-team13="Aleksandra&Ana" data-team14="Maksim&Kostantin" data-score13="5" data-score14="6">Aleksandra & Ana</div><div class="team winner-round" data-match="m7" data-team13="Aleksandra&Ana" data-team14="Maksim&Kostantin" data-score13="5" data-score14="6">Maksim & Kostantin</div></div>
+<div class="match"><div class="team" data-match="m8" data-team15="Martin&Filip" data-team16="Ivan&Zlatko" data-score15="3" data-score16="6">Martin & Filip</div><div class="team winner-round" data-match="m8" data-team15="Martin&Filip" data-team16="Ivan&Zlatko" data-score15="3" data-score16="6">Ivan & Zlatko</div></div>
+
+</div>
+
+<div class="round">
+<div class="match">
+  <div class="team winner-round">Tijana & Meri</div>
+  <div class="team">Vale & Eli</div>
+</div>
+<div class="match">
+  <div class="team winner-round">Eftim & Barbara</div>
+  <div class="team">Martin & Ivan</div>
+</div>
+<div class="match">
+  <div class="team">Bisera & Mila</div>
+  <div class="team winner-round">Matej & Zorica</div>
+</div>
+<div class="match">
+  <div class="team">Maksim & Kostantin</div>
+  <div class="team winner-round">Ivan & Zlatko</div>
+</div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Eftim & Barbara</div>
+        <div class="team winner-round">Tijana & Meri</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Matej & Zorica</div>
+        <div class="team">Ivan & Zlatko</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Matej & Zorica</div>
+        <div class="team">Tijana & Meri</div>
+    </div>
+</div>
+
+</div>
+
+<div class="bracket-center">
+
+<div class="final-container">
+
+    <p>Champions</p>
+
+<div class="team-box finalist top-team winner" data-team="Marko&Manas">
+Marko & Manas
+</div>
+
+<img src="./media/download.png" class="final-trophy">
+
+<div class="team-box finalist bottom-team" data-team="Matej&Zorica">
+Matej & Zorica
+</div>
+
+</div>
+
+</div>
+
+<div class="bracket-right">
+
+<div class="round">
+
+<div class="match"><div class="team">Filip & Sara</div><div class="team winner-round">Natali & Martina</div></div>
+<div class="match"><div class="team">Valentino & Nikola</div><div class="team winner-round">Atanas & Martin</div></div>
+<div class="match"><div class="team">Trajce & Ognen</div><div class="team winner-round">Kostadin & Filip</div></div>
+<div class="match"><div class="team">Lina & Roksanda</div><div class="team winner-round">Marko & Manas</div></div>
+<div class="match"><div class="team winner-round">Filip & Ilija</div><div class="team">Simona & Ivona</div></div>
+<div class="match"><div class="team winner-round">Dimitrij & Petar</div><div class="team">Vasko & Viktor</div></div>
+<div class="match"><div class="team">Kristina & Gabriela</div><div class="team winner-round">Emir & Viktor</div></div>
+<div class="match"><div class="team">Vasil & Alek</div><div class="team winner-round">Jovan & David</div></div>
+
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team winner-round">Atanas & Martin</div>
+        <div class="team">Natali & Martina</div>
+    </div>
+    <div class="match">
+        <div class="team">Kostadin & Filip</div>
+        <div class="team winner-round">Marko & Manas</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Filip & Ilija</div>
+        <div class="team">Dimitrij & Petar</div>
+    </div>
+    <div class="match">
+        <div class="team winner-round">Emir & Viktor</div>
+        <div class="team">Jovan & David</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Atanas & Martin</div>
+        <div class="team winner-round">Marko & Manas</div>
+    </div>
+    <div class="match">
+        <div class="team">Filip & Ilija</div>
+        <div class="team winner-round">Emir & Viktor</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Emir & Viktor</div>
+        <div class="team winner-round">Marko & Manas</div>
+    </div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 2022 -->
+
+<section class="bracket-year">
+<h3>2022 • 32 Teams</h3>
+
+<div class="bracket-layout">
+
+<div class="bracket-left">
+
+<div class="round">
+
+<div class="match"><div class="team">Team 1</div><div class="team">Team 2</div></div>
+<div class="match"><div class="team">Team 3</div><div class="team">Team 4</div></div>
+<div class="match"><div class="team">Team 5</div><div class="team">Team 6</div></div>
+<div class="match"><div class="team">Team 7</div><div class="team">Team 8</div></div>
+<div class="match"><div class="team">Team 9</div><div class="team">Team 10</div></div>
+<div class="match"><div class="team">Team 11</div><div class="team">Team 12</div></div>
+<div class="match"><div class="team">Team 13</div><div class="team">Team 14</div></div>
+<div class="match"><div class="team">Team 15</div><div class="team">Team 16</div></div>
+
+</div>
+
+<div class="round">
+<div class="match">
+  <div class="team">Winner1</div>
+  <div class="team">Winner2</div>
+</div>
+<div class="match">
+  <div class="team">Winner3</div>
+  <div class="team">Winner4</div>
+</div>
+<div class="match">
+  <div class="team">Winner5</div>
+  <div class="team">Winner6</div>
+</div>
+<div class="match">
+  <div class="team">Winner7</div>
+  <div class="team">Winner8</div>
+</div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Winner9</div>
+        <div class="team">Winner10</div>
+    </div>
+    <div class="match">
+        <div class="team">Winner11</div>
+        <div class="team">Winner12</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Winner17</div>
+        <div class="team">Winner18</div>
+    </div>
+</div>
+
+</div>
+
+<div class="bracket-center">
+<div class="match final">FINAL</div>
+</div>
+
+<div class="bracket-right">
+
+<div class="round">
+
+<div class="match"><div class="team">Team 31</div><div class="team">Team 32</div></div>
+<div class="match"><div class="team">Team 29</div><div class="team">Team 30</div></div>
+<div class="match"><div class="team">Team 27</div><div class="team">Team 28</div></div>
+<div class="match"><div class="team">Team 25</div><div class="team">Team 26</div></div>
+<div class="match"><div class="team">Team 23</div><div class="team">Team 24</div></div>
+<div class="match"><div class="team">Team 21</div><div class="team">Team 22</div></div>
+<div class="match"><div class="team">Team 19</div><div class="team">Team 20</div></div>
+<div class="match"><div class="team">Team 17</div><div class="team">Team 18</div></div>
+
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Winner15</div>
+        <div class="team">Winner16</div>
+    </div>
+    <div class="match">
+        <div class="team">Winner13</div>
+        <div class="team">Winner14</div>
+    </div>
+    <div class="match">
+        <div class="team">Winner11</div>
+        <div class="team">Winner12</div>
+    </div>
+    <div class="match">
+        <div class="team">Winner9</div>
+        <div class="team">Winner10</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Winner15</div>
+        <div class="team">Winner16</div>
+    </div>
+    <div class="match">
+        <div class="team">Winner13</div>
+        <div class="team">Winner14</div>
+    </div>
+</div>
+
+<div class="round">
+    <div class="match">
+        <div class="team">Winner19</div>
+        <div class="team">Winner20</div>
+    </div>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<!-- 2021 -->
+
+<section class="bracket-year">
+<h3>2021 • 16 Teams</h3>
+
+<div class="bracket-layout">
+
+<div class="bracket-left">
+
+<div class="round">
+
+<div class="match"><div class="team">Team 1</div><div class="team">Team 2</div></div>
+<div class="match"><div class="team">Team 3</div><div class="team">Team 4</div></div>
+<div class="match"><div class="team">Team 5</div><div class="team">Team 6</div></div>
+<div class="match"><div class="team">Team 7</div><div class="team">Team 8</div></div>
+
+</div>
+
+<div class="round">
+<div class="match">Quarterfinal</div>
+<div class="match">Quarterfinal</div>
+</div>
+
+<div class="round">
+<div class="match">Semifinal</div>
+</div>
+
+</div>
+
+<div class="bracket-center">
+<div class="match final">FINAL</div>
+</div>
+
+<div class="bracket-right">
+
+<div class="round">
+
+<div class="match"><div class="team">Team 9</div><div class="team">Team 10</div></div>
+<div class="match"><div class="team">Team 11</div><div class="team">Team 12</div></div>
+<div class="match"><div class="team">Team 13</div><div class="team">Team 14</div></div>
+<div class="match"><div class="team">Team 15</div><div class="team">Team 16</div></div>
+
+</div>
+
+<div class="round">
+<div class="match">Quarterfinal</div>
+<div class="match">Quarterfinal</div>
+
+</div>
+
+<div class="round">
+<div class="match">Semifinal</div>
+</div>
+
+</div>
+
+</div>
+</section>
+</main>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+const modal = document.getElementById("matchModal");
+const closeBtn = document.querySelector(".close");
+
+const team1 = document.getElementById("modalTeam1");
+const team2 = document.getElementById("modalTeam2");
+
+const score1 = document.getElementById("modalScore1");
+const score2 = document.getElementById("modalScore2");
+
+document.querySelectorAll(".team, .team-box").forEach(el => {
+
+el.addEventListener("click", () => {
+
+const match = el.closest(".match");
+const teams = match ? Array.from(match.querySelectorAll(".team, .team-box")) : [el];
+const first = teams[0] || el;
+const second = teams[1] || el;
+const scoreSource = teams.find(team => Object.keys(team.dataset).some(key => key.startsWith("score"))) || first;
+const scores = Object.entries(scoreSource.dataset)
+	.filter(([key]) => key.startsWith("score"))
+	.sort(([a], [b]) => Number(a.replace("score", "")) - Number(b.replace("score", "")))
+	.map(([, value]) => value);
+
+team1.textContent = first.textContent.trim() || "Team 1";
+team2.textContent = second.textContent.trim() || "Team 2";
+score1.value = scores[0] || "";
+score2.value = scores[1] || "";
+score1.readOnly = true;
+score2.readOnly = true;
+
+modal.classList.add("active");
+
+});
+
+});
+
+closeBtn.addEventListener("click", () => {
+modal.classList.remove("active");
+});
+
+modal.addEventListener("click", e => {
+if(e.target === modal){
+modal.classList.remove("active");
+}
+});
+
+});
+
+</script>
+
+<footer>
+<div class="container">
+<p>Copyright © 2026 | Beer Olympics™</p>
+</div>
+</footer>
+
+</body>
+</html>

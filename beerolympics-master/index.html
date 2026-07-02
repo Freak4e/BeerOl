@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" type="image/x-icon" href="./favicon.ico" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap&family=Lora:wght@300;400;500"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+			integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		<title>Beer Olympics™</title>
+	</head>
+	<body>
+
+		<section id="home">
+			<div class="modal" id="registerModal">
+				<div class="exit"></div>
+				<div class="modal-wrapper">
+					<div class="modal-content">
+						<h2 class="form-heading">Register <br/>
+						<span class="primary-color">Your</span><br />
+						Team <br /></h2>
+						<form action="#" class="register-form">
+							<div class="message-container">
+								<small style="color: #ff0000"></small>
+							</div>
+							<div class="input-container">
+								<label for="name" class="input-label">Your Name</label>
+								<input
+									type="text"
+									name="name"
+									id="name"
+									class="input-field"
+									placeholder="Enter your full name..."
+								/>
+							</div>
+							<div class="beer-pong-register">
+								<div class="input-container">
+								<label for="teammate" class="input-label">Teammate</label>
+								<input
+										type="text"
+										name="teammate"
+										id="teammate"
+										class="input-field"
+										placeholder="Enter your teammate's full name..."
+									/>
+								</div>
+								<div class="input-container">
+									<label for="team" class="input-label">Team Name</label>
+									<input
+										type="text"
+										name="team"
+										id="team"
+										class="input-field"
+										placeholder="Enter your team's name..."
+									/>
+								</div>
+							</div>
+							<div class="input-container">
+								<button
+									class="btn btn-blwhite btn-block"
+									type="submit"
+									name="submit"
+								>
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<nav class="navbar-wrapper">
+				<div class="container navbar">
+					<div class="logo">
+						<a href="#home">
+							<img
+								class="logo"
+								src="./media/logo.png"
+								alt="Logo"
+							/>
+						</a>
+					</div>
+					<div class="hamburger-menu">
+						<div class="menu-icon"></div>
+						<div class="hamburger-menu-links hidden">
+							<a class="link" href="#about">About</a>
+							<a class="link" href="#game1">Games</a>
+							<a class="link" href="./bracket.html">Bracket</a>
+							<a class="link" href="./tickets.html">Tickets</a>
+							<a class="link" href="./t-shirts.html">T-Shirts</a>
+							<a class="link" href="./halloffame.html">Hall of Fame</a>
+							<a class="link" href="./gallery.html">Gallery</a>
+							<a class="link" href="#contact">Contact</a>
+							<a class="link language" href="./mk.html">MK</a>
+						</div>
+					</div>
+					<div class="nav-links">
+						<a class="link" href="#about">About</a>
+						<a class="link" href="#game1">Games</a>
+						<a class="link" href="./bracket.html">Bracket</a>
+						<a class="link" href="./tickets.html">Tickets</a>
+						<a class="link" href="./t-shirts.html">T-Shirts</a>
+						<a class="link" href="./halloffame.html">Hall of Fame</a>
+						<a class="link" href="./gallery.html">Gallery</a>
+						<a class="link" href="#contact">Contact</a>
+						<a class="link language" href="./mk.html">MK</a>
+					</div>
+				</div>
+			</nav>
+
+			<div class="home-content">
+				<div class="main-content">
+					<div class="content-wrapper">
+						<h1 class="XL-heading">
+							Only One <span class="primary-color">Team</span> takes the 
+							<span class="primary-color">Crown</span> Will it be 
+							<span class="primary-color">Yours?</span>
+						</h1>
+						<button
+							class="btn"
+							onclick="showModal('registerModal')"
+						>
+							REGISTER
+						</button>
+					</div>
+					
+				</div>
+				<div class="middle-wave">
+					<img class="wave-large" src="./media/wave.png" />
+					<img class="wave-small" src="./media/waveSmall.png" />
+				</div>
+
+				<div class="showcase">
+					<div class="countdown-wrapper">
+						<h1 class="countdown-title">
+							Beer Olympics<span class="tm">™</span> <br> <span> "The Revival"</span>
+							</h1>
+							<a href="https://logwork.com/countdown-byz5"
+   							class="countdown-timer"
+							data-textcolor="#ffcc00"
+   							data-timezone="Europe/Skopje"
+   							data-date="2026-07-16 19:00"
+   							data-background="#ffcc00"
+   							data-digitscolor="#000000"
+							data-unitscolor="#ffcc00">
+   							Time Left
+							</a>
+					</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="text-content">
+                        <div class="message">
+							You, your friends, a bunch of beer and a lot of fun! The time has come for the sixth annual <span class="title-beer1">Beer Olympics™</span>.
+                        </div>
+                        <div class="about-text">
+							We are giving you the opportunity to attend the newest edition of the <span class="title-beer2">Beer Olympics™</span> ,future's greatest event. Our goal is to get people together, listen to good music, party hard and of course, drink a lot of beer! The last five years were amazing, achieving a great success. So, come join us on this remarkable journey. 
+							<br>
+							<br>
+							<span class="title-beer2">Beer Olympics™ "The Revival"</span> — another shot at glory, laughter, and unforgettable memories. Come celebrate the end of an era with us, compete for epic prizes, and maybe even win someone’s heart along the way ;)
+                        </div>
+                    </div>
+                </div>
+                <div class="about-canvas">
+                    <div id="canvas-container">
+                        <canvas id="canvas" width="1000" height="1000" style="width: 100%"></canvas>
+                        <ul id="tags-list">
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag1.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag2.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag3.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag4.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag5.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag6.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag7.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag8.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag9.jpg" /></a></li>
+                            <li><a href="javascript: return false;"><img src="./media/tagcloud/tag10.jpg" /></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+		</section>
+
+		<section class="game-container" id="game1">
+			<div class="container flex-reverse right">
+				<div class="game-info">
+					<h2 class="game-title XL-heading">
+						Beer Pong<br /><span class="primary-color">Duos</span>
+					</h2>
+					<p class="game-desc">
+						The classic beer game to get the night started right!
+					</p>
+					<button class="btn" onclick="showModal('pongModal')">
+						Learn More
+					</button>
+				</div>
+				<div class="game-illustration">
+					<img
+						class="blob"
+						src="./media/pongBlob.png"
+						alt="Beer Pong"
+					/>
+					<img src="./media/beerPong.png" alt="Beer Pong" />
+				</div>
+			</div>
+			<div class="modal" id="pongModal">
+				<div class="exit"></div>
+				<div class="modal-wrapper">
+					<div class="modal-content">
+						<div class="modal-illustration">
+							<img src="./media/modalWave.png" alt="Wave" />
+						</div>
+						<div class="modal-text">
+							<div>
+								<p class="main-p">
+									Here are the rules for Beer Pong Duos:
+								</p>
+
+								<p>1) The Cup Formation is 3-2-1 (6 cups).</p>
+
+								<p>2) The length of the game is 10 minutes. </p>
+								
+								<p>3) Each team is allowed 1 reformation of cups per game.</p>
+
+								<p>4) Both players from one team are given a ping pong ball to shoot and may do so simultaneously.</p>
+
+								<p>5) During offense, the players can choose between a standard shot and a bounce shot.</p>
+
+								<p>6) During offense, the players must keep their elbows behind the table, or the shot will not be counted.</p>
+
+								<p>7) Both players from the current team must have taken a shot before the other team can shoot.</p>
+
+								<p>8) A standard shot is worth 1 cup.</p>
+
+								<p>9) A bounce shot is worth 2 cups.</p>
+
+								<p>10) If both shooters score with a normal shot in the same cup, the opposing team loses 3 cups.</p>
+
+								<p>11) If the shooters score one bounce and one normal shot, the opposing team loses 3 cups.
+										If they score <b>in the same cup</b>, the opposing team loses 5 cups.</p>
+
+								<p>12) If both shooters score a bounce shot the opposing team loses 4 cups. 
+										If they score <b>in the same cup</b>, the opposing team loses 6 cups.</p>
+
+								<p>13) A bounce shot can be blocked.</p>
+
+								<p>14) Illegal blocks cost the defenders one cup.</p>
+								
+								<p>15) If the shooters win with one cup left, the opposing team is given 2 shots to try to extend the game into overtime.</p>
+
+								<p>16) The length of the overtime is 2 minutes. </p>
+								<br>
+								<a class="btn" href="./prize-pool.html">
+									Prize Pool
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="game-container" id="game1">
+			<div class="container flex-reverse left">
+				<div class="game-illustration">
+					<img
+						class="blob"
+						src="./media/chugBlob.png"
+						alt="Beer Pong"
+					/>
+					<img src="./media/polaroid.png" alt="Beer Pong" />
+				</div>
+				<div class="game-info">
+					
+					<h2 class="game-title XL-heading">
+						Own <br /><span class="primary-color">The Moment</span>
+					</h2>
+					<p class="game-desc">
+						Take part in our newest competition and win a great prize!
+					</p>
+					
+						<button class="btn" onclick="showModal('momentModal')">
+						Learn More
+						</button>
+					
+				</div>
+				
+			</div>
+			<div class="modal" id="momentModal">
+				<div class="exit"></div>
+				<div class="modal-wrapper">
+					<div class="modal-content">
+						<div class="modal-illustration">
+							<img src="./media/modalWave.png" alt="Wave" />
+						</div>
+						<div class="modal-text">
+							<div>
+								<p class="main-p">
+									Not every victory happens on the field.
+									<br>
+									Some are captured in a single shot.
+									<br>
+									Show us your best moment from Beer Olympics and compete to be crowned the one who truly <i>owned the night</i> !
+								    <br>
+									<br>
+									How to participate:
+								</p>
+								<p>1) Own a Beer Olympics T-shirt</p>
+								<p>2) Take a photo (Minimum number of people in the photo must be 2)</p>
+								<p>3) Post the photo on your Instagram story</p>
+								<p>4) Tag Us on your story @beerolympics.official</p>
+								<p>5) Use the following hashtag on your story #OwnTheMoment</p>
+								<br>
+								<p><b>All of the conditions must be met to be able to compete!</b></p>
+								<br>
+								<p><b>The winner is selected by voting!</b></p>
+								<p><b>Submit your vote below.</b></p>
+								<br>
+								<a class="btn" href="./ownthemoment.html">
+									Vote
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>		
+		
+			<section class="game-container" id="game1">
+			<div class="container flex-reverse right">
+				<div class="game-info">
+					<h2 class="game-title XL-heading">
+						<span class="primary-color">Lottery</span>
+					</h2>
+					<p class="game-desc">
+						Buy your tickets and get a shot on winning prizes!
+					</p>
+					<button class="btn" onclick="showModal('lotteryModal')">
+						Learn More
+					</button>
+				</div>
+				<div class="game-illustration">
+					<img
+						class="blob"
+						src="./media/pongBlob.png"
+						alt="Beer Pong"
+					/>
+					<img src="./media/Beer Olympics Lottery.jpg" alt="Beer Pong" />
+				</div>
+			</div>
+			<div class="modal" id="lotteryModal">
+				<div class="exit"></div>
+				<div class="modal-wrapper">
+					<div class="modal-content">
+						<div class="modal-illustration">
+							<img src="./media/modalWave.png" alt="Wave" />
+						</div>
+						<div class="modal-text">
+							<div>
+								<p class="main-p">
+								We are giving you the chance to win great prizes!
+								</p>
+								<p>The only condition for participating in the <b>Lottery</b></p>
+								<p>is to buy a <b>Ticket</b></p>
+								<br>
+								<p>The price of the <b>Ticket</b> is <b>50 MKD</b>.</p>
+								<br>
+								<p>Everyone can buy as many tickets as desired up to 10.</p>
+								<br>
+								<p>There are three prizes that can be won through the <b>Lottery</b></p>
+								<br>
+								<p>The winners are selected through a <b>random draw</b> of the <b>Tickets</b></p>
+								<br>
+								<a class="btn" href="./lottery.html">
+									See Prizes
+								</a>		
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section class="comments-section">
+
+   			 <h2 class="XL-heading">Leave <span class="primary-color">Your</span> Mark</h2>
+
+   			 <div class="floating-area" id="floatingArea">
+       			 <!-- 10 boxes -->
+       				 <div class="floating-box"></div>
+       				 <div class="floating-box"></div>
+       				 <div class="floating-box"></div>
+       				 <div class="floating-box"></div>
+       				 <div class="floating-box"></div>
+        			 <div class="floating-box"></div>
+       				 <div class="floating-box"></div>
+       				 <div class="floating-box"></div>
+        			 <div class="floating-box"></div>
+        			 <div class="floating-box"></div>
+    		</div>
+
+		</section>
+
+
+		<section class="contact-wrapper">
+			<img src="./media/contactWave.png" class="contact-wave" />
+			<div class="container" id="contact">
+				<h2 class="XL-heading">
+					You have an <span class="white">Idea?</span>
+				</h2>
+				<h2 class="XL-heading">
+					Speak your <span class="white">Mind</span>
+				</h2>
+				<div class="contact-info">
+					<div class="contact-info-item">
+						<a
+							href="mailto:beerolympicss@gmail.com"
+							target="_blank"
+						>
+							<i class="fa-solid fa-paper-plane fa-3x"></i>
+							<h2>beerolympicss@gmail.com</h2>
+						</a>
+					</div>
+					<div class="contact-info-item">
+						<a
+							href="https://www.facebook.com/profile.php?id=61588552880800"
+							target="_blank"
+						>
+							<i class="fa-brands fa-facebook fa-3x"></i>
+							<h2>Beer Olympics</h2>
+						</a>
+					</div>
+					<div class="contact-info-item">
+						<a
+							href="https://www.instagram.com/beerolympics.official/"
+							target="_blank"
+						>
+							<i class="fa-brands fa-instagram fa-3x"></i>
+							<h2>beerolympics.official</h2>
+						</a>
+					</div>
+					<div class="contact-info-item">
+						<i class="fa-solid fa-phone fa-3x"></i>
+						<h2>+389 72 565 878</h2>
+					</div>
+				</div>
+				<form
+					method="POST"
+					action="https://submit-form.com/v6fTCYtkG"
+					name="contact"
+					class="contact-form"
+				>
+					<div class="input-row">
+						<div class="input-container">
+							<label for="name" class="input-label">Name</label>
+							<input
+								type="text"
+								name="name"
+								id="name"
+								class="input-field"
+								placeholder="Name..."
+								required
+							/>
+						</div>
+						<div class="input-container">
+							<label for="email" class="input-label"
+								>E-mail</label
+							>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								class="input-field"
+								placeholder="E-mail..."
+								required
+							/>
+						</div>
+					</div>
+					<div class="input-container">
+						<label for="message" class="input-label">Message</label>
+						<textarea
+							value=""
+							name="message"
+							id="message"
+							class="input-field"
+							cols="30"
+							rows="10"
+							placeholder="Message..."
+							required
+						></textarea>
+					</div>
+					<div class="input-container">
+						<button
+							class="btn btn-inverse btn-block"
+							type="submit"
+						>
+							Submit
+						</button>
+					</div>
+				</form>
+			</div>
+		</section>
+
+		<footer>
+			<div class="container">
+				<p>Copyright © 2026 | Beer Olympics<span class="tm">™</span></a></p>
+			</div>
+		</footer>
+        
+        <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+        </script>
+        <script src="tagcanvas.min.js" type="text/javascript"></script>
+		<script src="https://cdn.logwork.com/widget/countdown.js"></script>
+		
+		<script src="./app.js"></script>
+	</body>
+</html>

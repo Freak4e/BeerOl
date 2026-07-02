@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Beer Olympics | T-Shirts</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="tshirts">
+
+<!-- NAVBAR -->
+
+<nav class="navbar-wrapper scrolled-nav">
+<div class="container navbar">
+
+<div class="logo">
+<a href="./index.html#home">
+<img class="logo" src="./media/logo.png">
+</a>
+</div>
+
+<div class="hamburger-menu">
+<div class="menu-icon"></div>
+
+<div class="hamburger-menu-links hidden">
+<a class="link" href="index.html#about">About</a>
+<a class="link" href="index.html#game1">Games</a>
+<a class="link" href="./bracket.html">Bracket</a>
+<a class="link" href="./tickets.html">Tickets</a>
+<a class="link" href="./halloffame.html">Hall of Fame</a>
+<a class="link" href="./gallery.html">Gallery</a>
+<a class="link" href="index.html#contact">Contact</a>
+</div>
+</div>
+
+<div class="nav-links">
+<a class="link" href="index.html#about">About</a>
+<a class="link" href="index.html#game1">Games</a>
+<a class="link" href="./bracket.html">Bracket</a>
+<a class="link" href="./tickets.html">Tickets</a>
+<a class="link" href="./halloffame.html">Hall of Fame</a>
+<a class="link" href="./gallery.html">Gallery</a>
+<a class="link" href="index.html#contact">Contact</a>
+</div>
+
+</div>
+</nav>
+
+
+<!-- HEADER -->
+
+<section class="tshirt-header">
+
+<h1>Beer Olympics</h1>
+<h2 class="primary-color">T-Shirts</h2>
+
+</section>
+
+
+<!-- SHIRT DISPLAY -->
+
+<section class="shirts-display">
+
+<div class="shirt-card">
+
+<img id="whitePreview" src="./media/white-front.jpg">
+
+<div class="shirt-toggle">
+
+<button onclick="toggleWhite()">Front</button>
+<button onclick="toggleWhiteBack()">Back</button>
+
+</div>
+
+<p class="shirt-name">White Beer Olympics T-Shirt</p>
+
+</div>
+
+
+<div class="shirt-card">
+
+<img id="blackPreview" src="./media/black-front.jpg">
+
+<div class="shirt-toggle">
+
+<button onclick="toggleBlack()">Front</button>
+<button onclick="toggleBlackBack()">Back</button>
+
+</div>
+
+<p class="shirt-name">Black Beer Olympics T-Shirt</p>
+
+</div>
+
+</section>
+
+
+<!-- DESCRIPTION -->
+
+<section class="tshirt-description">
+
+<p>
+
+The official Beer Olympics T-Shirt is more than just merchandise.
+
+It is required to participate in the 
+<a href="./ownthemoment.html" class="competition-link">Own The Moment</a> 
+competition.
+
+Wear it proudly and represent your team during the event.
+
+</p>
+
+</section>
+
+
+<!-- PREORDER BUTTON -->
+
+<div class="preorder-container">
+
+<button class="preorder-btn" onclick="showModal('shirtModal')">
+Preorder Now
+</button>
+
+</div>
+
+
+
+<!-- MODAL -->
+<div class="modal" id="shirtModal">
+
+<div class="modal-wrapper">
+
+<div class="modal-content tshirt-modal">
+
+<!-- IMAGE HERO -->
+
+<div class="tshirt-hero">
+
+<img id="modalShirtImage" src="./media/white-front.jpg">
+
+<button class="arrow left" onclick="prevModal()">❮</button>
+<button class="arrow right" onclick="nextModal()">❯</button>
+
+</div>
+
+<!-- FORM -->
+
+<div class="modal-text tshirt-form">
+
+<h3>Pre-Order Beer Olympics T-Shirt</h3>
+
+<p class="shirt-price">Price: 400 MKD</p>
+
+<div class="color-switch">
+
+<button onclick="selectWhite()">White</button>
+<button onclick="selectBlack()">Black</button>
+
+</div>
+
+<form id="tshirtForm">
+
+<input type="text" name="firstName" placeholder="Name" required>
+
+<input type="text" name="lastName" placeholder="Surname" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<select name="size" required>
+<option value="">Select Size</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+
+<select name="color" required>
+<option value="">Select Color</option>
+<option>White</option>
+<option>Black</option>
+</select>
+
+<small id="tshirtMessage"></small>
+
+<button class="order-btn">Order</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+
+/* FRONT BACK PREVIEW */
+
+function toggleWhite(){
+document.getElementById("whitePreview").src="./media/white-front.jpg"
+}
+
+function toggleWhiteBack(){
+document.getElementById("whitePreview").src="./media/white-back.jpg"
+}
+
+function toggleBlack(){
+document.getElementById("blackPreview").src="./media/black-front.jpg"
+}
+
+function toggleBlackBack(){
+document.getElementById("blackPreview").src="./media/black-back.jpg"
+}
+
+
+/* MODAL SLIDER */
+
+let modalImages = [
+"./media/white-front.jpg",
+"./media/white-back.jpg"
+]
+
+let modalIndex = 0
+
+function nextModal(){
+modalIndex=(modalIndex+1)%modalImages.length
+document.getElementById("modalShirtImage").src=modalImages[modalIndex]
+}
+
+function prevModal(){
+modalIndex=(modalIndex-1+modalImages.length)%modalImages.length
+document.getElementById("modalShirtImage").src=modalImages[modalIndex]
+}
+
+
+/* COLOR SWITCH */
+
+function selectWhite(){
+modalImages=[
+"./media/white-front.jpg",
+"./media/white-back.jpg"
+]
+modalIndex=0
+document.getElementById("modalShirtImage").src=modalImages[0]
+}
+
+function selectBlack(){
+modalImages=[
+"./media/black-front.jpg",
+"./media/black-back.jpg"
+]
+modalIndex=0
+document.getElementById("modalShirtImage").src=modalImages[0]
+}
+
+</script>
+
+<footer>
+<p>
+Copyright © 2026 | Beer Olympics<span class="tm">™</span>
+</p>
+</footer>
+
+</body>
+</html>

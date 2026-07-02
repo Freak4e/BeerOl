@@ -1,0 +1,10 @@
+media/gallery/
+media/gallery-optimized-test/
+media/beerPongModal.jpg
+media/chugModal.jpg
+media/alcohol.png
+media/halloffame/*.jpg
+node_modules/
+.env
+.DS_Store
+Thumbs.db

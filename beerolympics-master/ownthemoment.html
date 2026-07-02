@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/x-icon" href="./favicon.ico" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Beer Olympics | Own The Moment</title>
+</head>
+<body class="moment-page">
+	<nav class="navbar-wrapper scrolled-nav">
+		<div class="container navbar">
+			<div class="logo">
+				<a href="./index.html#home"><img class="logo" src="./media/logo.png" alt="Logo" /></a>
+			</div>
+			<div class="hamburger-menu">
+				<div class="menu-icon"></div>
+				<div class="hamburger-menu-links hidden">
+					<a class="link" href="./index.html#about">About</a>
+					<a class="link" href="./index.html#game1">Games</a>
+					<a class="link" href="./bracket.html">Bracket</a>
+					<a class="link" href="./tickets.html">Tickets</a>
+					<a class="link" href="./t-shirts.html">T-Shirts</a>
+					<a class="link" href="./halloffame.html">Hall of Fame</a>
+					<a class="link" href="./gallery.html">Gallery</a>
+					<a class="link" href="./index.html#contact">Contact</a>
+				</div>
+			</div>
+			<div class="nav-links">
+				<a class="link" href="./index.html#about">About</a>
+				<a class="link" href="./index.html#game1">Games</a>
+				<a class="link" href="./bracket.html">Bracket</a>
+				<a class="link" href="./tickets.html">Tickets</a>
+				<a class="link" href="./t-shirts.html">T-Shirts</a>
+				<a class="link" href="./halloffame.html">Hall of Fame</a>
+				<a class="link" href="./gallery.html">Gallery</a>
+				<a class="link" href="./index.html#contact">Contact</a>
+			</div>
+		</div>
+	</nav>
+
+	<main class="moment-container">
+		<section class="moment-header">
+			<h1>Own <span class="primary-color">The Moment</span></h1>
+			<p>Vote for the photo that captured the best Beer Olympics moment.</p>
+		</section>
+
+		<section class="moment-rules">
+			<h2>Rules</h2>
+			<div class="rules-grid">
+				<p>Own a Beer Olympics T-shirt.</p>
+				<p>Take a photo with at least 2 people.</p>
+				<p>Post it on your Instagram story.</p>
+				<p>Tag @beerolympics.official.</p>
+				<p>Use #OwnTheMoment.</p>
+				<p>The winner is selected by voting.</p>
+			</div>
+		</section>
+
+		<section class="moment-grid" id="momentGrid"></section>
+	</main>
+
+	<footer>
+		<div class="container">
+			<p>Copyright © 2026 | Beer Olympics<span class="tm">™</span></p>
+		</div>
+	</footer>
+
+	<script src="./app.js"></script>
+	<script>
+		const moments = [
+			{ id: 'moment-1', title: 'Moment 1', img: './media/gallery-optimized/possible1.webp' },
+			{ id: 'moment-2', title: 'Moment 2', img: './media/gallery-optimized/possible2.webp' },
+			{ id: 'moment-3', title: 'Moment 3', img: './media/gallery-optimized/possible3.webp' },
+			{ id: 'moment-4', title: 'Moment 4', img: './media/gallery-optimized/possible4.webp' },
+			{ id: 'moment-5', title: 'Moment 5', img: './media/gallery-optimized/possible5.webp' },
+			{ id: 'moment-6', title: 'Moment 6', img: './media/gallery-optimized/possible6.webp' },
+			{ id: 'moment-7', title: 'Moment 7', img: './media/polaroid.png' },
+			{ id: 'moment-8', title: 'Moment 8', img: './media/new.png' },
+			{ id: 'moment-9', title: 'Moment 9', img: './media/new1.png' },
+			{ id: 'moment-10', title: 'Moment 10', img: './media/newthing.png' }
+		];
+
+		const votedKey = 'beerOlympicsMomentVotes';
+		const fallbackLikesKey = 'beerOlympicsMomentLikes';
+		const voted = JSON.parse(localStorage.getItem(votedKey) || '[]');
+		let fallbackLikes = JSON.parse(localStorage.getItem(fallbackLikesKey) || '{}');
+
+		function renderMoments(likes = {}) {
+			const grid = document.getElementById('momentGrid');
+			grid.innerHTML = moments.map(item => {
+				const liked = voted.includes(item.id);
+				const count = likes[item.id] || fallbackLikes[item.id] || 0;
+				return `
+					<article class="moment-card">
+						<img src="${item.img}" alt="${item.title}" />
+						<div class="moment-card-body">
+							<h3>${item.title}</h3>
+							<button class="like-btn ${liked ? 'liked' : ''}" data-id="${item.id}" ${liked ? 'disabled' : ''}>
+								<span>Like</span>
+								<strong>${count}</strong>
+							</button>
+						</div>
+					</article>
+				`;
+			}).join('');
+
+			document.querySelectorAll('.like-btn').forEach(btn => {
+				btn.addEventListener('click', () => voteMoment(btn.dataset.id));
+			});
+		}
+
+		async function loadMomentLikes() {
+			try {
+				const res = await fetch(`${BACKEND_URL}/moment-likes`);
+				const likes = await res.json();
+				renderMoments(likes);
+			} catch (err) {
+				renderMoments();
+			}
+		}
+
+		async function voteMoment(id) {
+			if (voted.includes(id)) return;
+
+			voted.push(id);
+			localStorage.setItem(votedKey, JSON.stringify(voted));
+
+			try {
+				const res = await fetch(`${BACKEND_URL}/moment-likes/${id}/like`, { method: 'POST' });
+				const likes = await res.json();
+				renderMoments(likes);
+			} catch (err) {
+				fallbackLikes[id] = (fallbackLikes[id] || 0) + 1;
+				localStorage.setItem(fallbackLikesKey, JSON.stringify(fallbackLikes));
+				renderMoments();
+			}
+		}
+
+		loadMomentLikes();
+	</script>
+</body>
+</html>
