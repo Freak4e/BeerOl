@@ -63,6 +63,26 @@ initDB();
 
 const maxPongTeams = 64;
 
+function getMailConfig() {
+	const mailUser = process.env.MAIL_USER;
+	const mailPass = process.env.MAIL_PASS;
+	const organizerEmail = process.env.ORGANIZER_EMAIL || 'beerolympicss@gmail.com';
+
+	if (!mailUser || !mailPass) return null;
+
+	return {
+		mailUser,
+		organizerEmail,
+		transporter: nodemailer.createTransport({
+			service: 'gmail',
+			auth: {
+				user: mailUser,
+				pass: mailPass
+			}
+		})
+	};
+}
+
 // ==================
 // ROUTES
 // ==================
@@ -159,24 +179,14 @@ app.post('/tshirt-preorder', async (req, res) => {
 			});
 		}
 
-		const mailUser = process.env.MAIL_USER;
-		const mailPass = process.env.MAIL_PASS;
-		const organizerEmail = process.env.ORGANIZER_EMAIL || 'beerolympicss@gmail.com';
+		const mailConfig = getMailConfig();
 
-		if (!mailUser || !mailPass) {
+		if (!mailConfig) {
 			return res.status(500).json({
 				success: false,
 				msg: 'Email is not configured on the server.'
 			});
 		}
-
-		const transporter = nodemailer.createTransport({
-			service: 'gmail',
-			auth: {
-				user: mailUser,
-				pass: mailPass
-			}
-		});
 
 		const orderText = [
 			'Beer Olympics T-Shirt preorder',
@@ -186,10 +196,10 @@ app.post('/tshirt-preorder', async (req, res) => {
 			`Color: ${color}`
 		].join('\n');
 
-		await transporter.sendMail({
-			from: `"Beer Olympics" <${mailUser}>`,
+		await mailConfig.transporter.sendMail({
+			from: `"Beer Olympics" <${mailConfig.mailUser}>`,
 			to: email,
-			cc: organizerEmail,
+			cc: mailConfig.organizerEmail,
 			subject: 'Beer Olympics T-Shirt Preorder Confirmation',
 			text: `${orderText}\n\nYour preorder has been received.`
 		});
@@ -200,6 +210,13 @@ app.post('/tshirt-preorder', async (req, res) => {
 		});
 	} catch (err) {
 		console.error(err);
+		if (err.code === 'EAUTH') {
+			return res.status(500).json({
+				success: false,
+				msg: 'Email login failed. Use a Gmail App Password for MAIL_PASS.'
+			});
+		}
+
 		res.status(500).json({
 			success: false,
 			msg: 'Server error.'
@@ -289,6 +306,25 @@ app.post('/', async (req, res) => {
 			'INSERT INTO teams(name, member1, member2) VALUES($1, $2, $3)',
 			[team, name, teammate]
 		);
+
+		try {
+			const mailConfig = getMailConfig();
+			if (mailConfig) {
+				await mailConfig.transporter.sendMail({
+					from: `"Beer Olympics" <${mailConfig.mailUser}>`,
+					to: mailConfig.organizerEmail,
+					subject: 'New Beer Pong Team Registration',
+					text: [
+						'New Beer Pong team registration',
+						`Team name: ${team}`,
+						`Player 1: ${name}`,
+						`Player 2: ${teammate}`
+					].join('\n')
+				});
+			}
+		} catch (mailErr) {
+			console.error('Registration email failed:', mailErr);
+		}
 
 		return res.json({
 			success: true,

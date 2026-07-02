@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node beerbackend-master/index.js"
+    "start": "node beerbackend-master/index.js",
+    "dev": "node dev-server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",

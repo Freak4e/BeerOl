@@ -230,6 +230,7 @@ textarea {
 	justify-content: center;
 	margin-top: 40px;
 	transform: scale(2);
+	transform-origin: center top;
 	font-weight: bold;
 }
 
@@ -1682,6 +1683,9 @@ font-family:'Tangerine';
 
 .bracket-year{
 margin-bottom:200px;
+overflow-x:auto;
+overflow-y:hidden;
+padding-bottom:20px;
 }
 
 .bracket-year h3{
@@ -1700,6 +1704,7 @@ display:grid;
 grid-template-columns:40% 20% 40%;
 align-items:center;
 width:100%;
+min-width:1100px;
 }
 
 
@@ -1908,19 +1913,28 @@ float:right;
 @media(max-width:1000px){
 
 .bracket-layout{
-grid-template-columns:100%;
+grid-template-columns:1fr;
 gap:60px;
+min-width:0;
 }
 
 /* disable mirroring */
 
+.bracket-left,
 .bracket-right{
-flex-direction:column;
+flex-direction:row;
+flex-wrap:wrap;
+gap:24px;
 }
 
 .round{
 height:auto;
 gap:20px;
+}
+
+.bracket-left .round:last-child,
+.bracket-right .round:last-child{
+margin:0;
 }
 
 }
@@ -1937,6 +1951,7 @@ gap:20px;
     position: relative;
     height: 400px;
     margin-top: 50px;
+	overflow:hidden;
 }
 
 /* 💬 SPEECH BUBBLE STYLE */
@@ -2021,6 +2036,40 @@ gap:20px;
     0%   { transform: translateY(0px); }
     50%  { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
+}
+
+@media (max-width: 700px) {
+	.countdown-wrapper {
+		width: 100%;
+		padding: 0 1rem;
+	}
+
+	.countdown-title {
+		font-size: 2.5rem;
+	}
+
+	.countdown-title span {
+		font-size: 1.5rem;
+	}
+
+	.countdown-timer {
+		transform: scale(0.5);
+		margin-top: 20px;
+	}
+
+	.floating-box {
+		width: 140px;
+		min-height: 80px;
+	}
+
+	.floating-box:nth-child(4),
+	.floating-box:nth-child(7) {
+		left: calc(100% - 150px);
+	}
+
+	.floating-box:nth-child(6) {
+		left: calc(100% - 160px);
+	}
 }
 
 /* -------------------- */

@@ -18,7 +18,6 @@
 				<div class="hamburger-menu-links hidden">
 					<a class="link" href="./index.html#about">About</a>
 					<a class="link" href="./index.html#game1">Games</a>
-					<a class="link" href="./bracket.html">Bracket</a>
 					<a class="link" href="./tickets.html">Tickets</a>
 					<a class="link" href="./t-shirts.html">T-Shirts</a>
 					<a class="link" href="./halloffame.html">Hall of Fame</a>
@@ -29,7 +28,6 @@
 			<div class="nav-links">
 				<a class="link" href="./index.html#about">About</a>
 				<a class="link" href="./index.html#game1">Games</a>
-				<a class="link" href="./bracket.html">Bracket</a>
 				<a class="link" href="./tickets.html">Tickets</a>
 				<a class="link" href="./t-shirts.html">T-Shirts</a>
 				<a class="link" href="./halloffame.html">Hall of Fame</a>
@@ -70,7 +68,7 @@
 		<div class="add-photo-content">
 			<button class="add-photo-close" type="button" onclick="hideAddPhotoModal()">x</button>
 			<h2>Add Your Photo</h2>
-			<p>This preview adds the photo on this device. Replace placeholders with final submissions before publishing.</p>
+			<p>Add a photo submission for voting.</p>
 			<form id="addPhotoForm">
 				<input type="text" id="photoTitle" placeholder="Submission title" required />
 				<input type="file" id="photoFile" accept="image/*" required />
@@ -88,18 +86,6 @@
 	<script src="./app.js"></script>
 	<script>
 		const MOMENT_BACKEND_URL = '/api';
-		const moments = [
-			{ id: 'moment-1', title: 'Submission 1', img: './media/gallery-optimized/possible1.webp' },
-			{ id: 'moment-2', title: 'Submission 2', img: './media/gallery-optimized/possible2.webp' },
-			{ id: 'moment-3', title: 'Submission 3', img: './media/gallery-optimized/possible3.webp' },
-			{ id: 'moment-4', title: 'Submission 4', img: './media/gallery-optimized/possible4.webp' },
-			{ id: 'moment-5', title: 'Submission 5', img: './media/gallery-optimized/possible5.webp' },
-			{ id: 'moment-6', title: 'Submission 6', img: './media/gallery-optimized/possible6.webp' },
-			{ id: 'moment-7', title: 'Submission 7', img: './media/polaroid.png' },
-			{ id: 'moment-8', title: 'Submission 8', img: './media/new.png' },
-			{ id: 'moment-9', title: 'Submission 9', img: './media/new1.png' },
-			{ id: 'moment-10', title: 'Submission 10', img: './media/newthing.png' }
-		];
 
 		const votedKey = 'beerOlympicsMomentVotes';
 		const fallbackLikesKey = 'beerOlympicsMomentLikes';
@@ -110,7 +96,12 @@
 
 		function renderMoments(likes = {}) {
 			const grid = document.getElementById('momentGrid');
-			const allMoments = localMoments.concat(moments);
+			const allMoments = localMoments;
+
+			if (!allMoments.length) {
+				grid.innerHTML = '<p class="moment-empty">No photo submissions yet.</p>';
+				return;
+			}
 
 			grid.innerHTML = allMoments.map(item => {
 				const liked = voted.includes(item.id);
@@ -120,7 +111,7 @@
 						<span class="moment-rank">${item.title}</span>
 						<img src="${item.img}" alt="${item.title}" />
 						<div class="moment-card-body">
-							<h3>Photo Placeholder</h3>
+							<h3>${item.title}</h3>
 							<button class="like-btn ${liked ? 'liked' : ''}" data-id="${item.id}" ${liked ? 'disabled' : ''}>
 								<span>Like</span>
 								<strong>${count}</strong>

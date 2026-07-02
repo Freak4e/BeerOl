@@ -114,6 +114,8 @@ function sendSuccessMessage(message) {
 }
 
 async function postData(url, data) {
+	const submitBtn = document.querySelector('.btn-blwhite');
+
 	try {
 		const response = await fetch(url, {
 			method: 'POST',
@@ -122,9 +124,18 @@ async function postData(url, data) {
 			body: JSON.stringify(data)
 		});
 
-		const responseJSON = await response.json();
+		const responseJSON = await response.json().catch(() => ({
+			success: false,
+			msg: 'Server returned an invalid response.'
+		}));
+
+		if (!response.ok && !responseJSON.msg) {
+			responseJSON.msg = 'Server error.';
+		}
+
 		handleResponseJSON(responseJSON);
 	} catch (err) {
+		if (submitBtn) submitBtn.textContent = 'Submit';
 		sendErrorMessage('Could not connect to the server.');
 	}
 }
