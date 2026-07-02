@@ -1,0 +1,46 @@
+# BeerOl
+
+BeerOl is the website and backend for the Beer Olympics event. It includes the public event pages, ticket and T-shirt preorder pages, gallery, hall of fame, brackets, comments, Own The Moment voting, and backend APIs for registrations, comments, voting, and preorder confirmation emails.
+
+## Project Structure
+
+- `beerolympics-master/` - static frontend website
+- `beerbackend-master/` - Express/PostgreSQL backend
+
+## Frontend
+
+The frontend is a static HTML/CSS/JavaScript site. Large gallery images are optimized to WebP and served from:
+
+```text
+beerolympics-master/media/gallery-optimized/
+```
+
+Original gallery images are intentionally ignored from Git:
+
+```text
+beerolympics-master/media/gallery/
+```
+
+## Backend
+
+The backend uses:
+
+- Express
+- PostgreSQL
+- Nodemailer
+- dotenv
+
+Required production environment variables:
+
+```text
+DATABASE_URL=
+MAIL_USER=
+MAIL_PASS=
+ORGANIZER_EMAIL=
+```
+
+Local `.env` files are ignored and should not be committed.
+
+## Deploy Notes
+
+The frontend assets have been optimized for a deploy-safe size. The backend needs a PostgreSQL database and email credentials configured on the hosting provider.
