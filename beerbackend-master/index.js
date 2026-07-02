@@ -40,6 +40,15 @@ async function initDB() {
     `);
 
 	await pool.query(`
+		CREATE TABLE IF NOT EXISTS moment_photos (
+			id SERIAL PRIMARY KEY,
+			title TEXT NOT NULL,
+			image_url TEXT NOT NULL,
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+		);
+	`);
+
+	await pool.query(`
 		CREATE TABLE IF NOT EXISTS moment_likes (
 			moment_id TEXT PRIMARY KEY,
 			likes INTEGER NOT NULL DEFAULT 0
