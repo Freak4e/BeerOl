@@ -2035,7 +2035,7 @@ margin-top:8.5rem;
 
 .moment-container,
 .lottery-container{
-padding:60px 5% 100px;
+padding:60px 5% 120px;
 }
 
 .moment-header,
@@ -2087,25 +2087,42 @@ padding:14px;
 font-weight:600;
 }
 
+.moment-submissions{
+max-width:1150px;
+margin:0 auto;
+text-align:center;
+}
+
+.moment-submissions h2{
+font-size:30px;
+margin-bottom:28px;
+}
+
 .moment-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:28px;
-max-width:1200px;
 margin:0 auto;
+align-items:stretch;
 }
 
 .moment-card{
 background:white;
 border-radius:8px;
+padding:24px;
 overflow:hidden;
 box-shadow:0 12px 28px rgba(0,0,0,0.18);
+border:3px solid #ffcc00;
+text-align:center;
 }
 
 .moment-card img{
 height:280px;
 object-fit:cover;
 display:block;
+border-radius:8px;
+margin-bottom:18px;
+background:#fff5bf;
 }
 
 .moment-card-body{
@@ -2117,7 +2134,16 @@ padding:18px;
 }
 
 .moment-card-body h3{
-font-size:20px;
+font-size:18px;
+}
+
+.moment-rank{
+display:inline-block;
+background:#ffcc00;
+padding:8px 16px;
+border-radius:999px;
+font-weight:bold;
+margin-bottom:18px;
 }
 
 .like-btn{

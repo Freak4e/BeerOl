@@ -57,7 +57,10 @@
 			</div>
 		</section>
 
-		<section class="moment-grid" id="momentGrid"></section>
+		<section class="moment-submissions">
+			<h2>Photo Submissions</h2>
+			<div class="moment-grid" id="momentGrid"></div>
+		</section>
 	</main>
 
 	<footer>
@@ -68,17 +71,18 @@
 
 	<script src="./app.js"></script>
 	<script>
+		const MOMENT_BACKEND_URL = 'https://beerolympics-backend.onrender.com';
 		const moments = [
-			{ id: 'moment-1', title: 'Moment 1', img: './media/gallery-optimized/possible1.webp' },
-			{ id: 'moment-2', title: 'Moment 2', img: './media/gallery-optimized/possible2.webp' },
-			{ id: 'moment-3', title: 'Moment 3', img: './media/gallery-optimized/possible3.webp' },
-			{ id: 'moment-4', title: 'Moment 4', img: './media/gallery-optimized/possible4.webp' },
-			{ id: 'moment-5', title: 'Moment 5', img: './media/gallery-optimized/possible5.webp' },
-			{ id: 'moment-6', title: 'Moment 6', img: './media/gallery-optimized/possible6.webp' },
-			{ id: 'moment-7', title: 'Moment 7', img: './media/polaroid.png' },
-			{ id: 'moment-8', title: 'Moment 8', img: './media/new.png' },
-			{ id: 'moment-9', title: 'Moment 9', img: './media/new1.png' },
-			{ id: 'moment-10', title: 'Moment 10', img: './media/newthing.png' }
+			{ id: 'moment-1', title: 'Submission 1', img: './media/gallery-optimized/possible1.webp' },
+			{ id: 'moment-2', title: 'Submission 2', img: './media/gallery-optimized/possible2.webp' },
+			{ id: 'moment-3', title: 'Submission 3', img: './media/gallery-optimized/possible3.webp' },
+			{ id: 'moment-4', title: 'Submission 4', img: './media/gallery-optimized/possible4.webp' },
+			{ id: 'moment-5', title: 'Submission 5', img: './media/gallery-optimized/possible5.webp' },
+			{ id: 'moment-6', title: 'Submission 6', img: './media/gallery-optimized/possible6.webp' },
+			{ id: 'moment-7', title: 'Submission 7', img: './media/polaroid.png' },
+			{ id: 'moment-8', title: 'Submission 8', img: './media/new.png' },
+			{ id: 'moment-9', title: 'Submission 9', img: './media/new1.png' },
+			{ id: 'moment-10', title: 'Submission 10', img: './media/newthing.png' }
 		];
 
 		const votedKey = 'beerOlympicsMomentVotes';
@@ -93,9 +97,10 @@
 				const count = likes[item.id] || fallbackLikes[item.id] || 0;
 				return `
 					<article class="moment-card">
+						<span class="moment-rank">${item.title}</span>
 						<img src="${item.img}" alt="${item.title}" />
 						<div class="moment-card-body">
-							<h3>${item.title}</h3>
+							<h3>Photo Placeholder</h3>
 							<button class="like-btn ${liked ? 'liked' : ''}" data-id="${item.id}" ${liked ? 'disabled' : ''}>
 								<span>Like</span>
 								<strong>${count}</strong>
@@ -112,7 +117,7 @@
 
 		async function loadMomentLikes() {
 			try {
-				const res = await fetch(`${BACKEND_URL}/moment-likes`);
+				const res = await fetch(`${MOMENT_BACKEND_URL}/moment-likes`);
 				const likes = await res.json();
 				renderMoments(likes);
 			} catch (err) {
@@ -127,7 +132,7 @@
 			localStorage.setItem(votedKey, JSON.stringify(voted));
 
 			try {
-				const res = await fetch(`${BACKEND_URL}/moment-likes/${id}/like`, { method: 'POST' });
+				const res = await fetch(`${MOMENT_BACKEND_URL}/moment-likes/${id}/like`, { method: 'POST' });
 				const likes = await res.json();
 				renderMoments(likes);
 			} catch (err) {
@@ -137,6 +142,7 @@
 			}
 		}
 
+		renderMoments();
 		loadMomentLikes();
 	</script>
 </body>
