@@ -2080,11 +2080,15 @@ body.moment-page,
 body.lottery-page{
 background:#fee283;
 margin-top:8.5rem;
+min-height:calc(100vh - 8.5rem);
+display:flex;
+flex-direction:column;
 }
 
 .moment-container,
 .lottery-container{
 padding:60px 5% 120px;
+flex:1;
 }
 
 .moment-header,
@@ -2348,6 +2352,20 @@ border-radius:8px;
 margin-bottom:18px;
 }
 
+.prize-placeholder{
+height:280px;
+border-radius:8px;
+margin-bottom:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#fff7b8,#ffffff);
+border:2px dashed #ffcc00;
+font-size:22px;
+font-weight:700;
+color:#111;
+}
+
 .lottery-prize-card h2{
 font-size:26px;
 margin-bottom:10px;
@@ -2378,7 +2396,8 @@ grid-template-columns:1fr;
 }
 
 .moment-card img,
-.lottery-prize-card img{
+.lottery-prize-card img,
+.prize-placeholder{
 height:230px;
 }
 }
