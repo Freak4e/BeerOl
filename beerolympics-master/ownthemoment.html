@@ -86,15 +86,12 @@
 		const MOMENT_BACKEND_URL = '/api';
 
 		const votedKey = 'beerOlympicsMomentVotes';
-		const fallbackLikesKey = 'beerOlympicsMomentLikes';
-		const localMomentsKey = 'beerOlympicsLocalMomentPhotos';
 		const voted = JSON.parse(localStorage.getItem(votedKey) || '[]');
-		let fallbackLikes = JSON.parse(localStorage.getItem(fallbackLikesKey) || '{}');
-		let localMoments = JSON.parse(localStorage.getItem(localMomentsKey) || '[]');
+		let moments = [];
 
 		function renderMoments(likes = {}) {
 			const grid = document.getElementById('momentGrid');
-			const allMoments = localMoments;
+			const allMoments = moments;
 
 			if (!allMoments.length) {
 				grid.innerHTML = '<p class="moment-empty">No photo submissions yet.</p>';
@@ -103,7 +100,7 @@
 
 			grid.innerHTML = allMoments.map(item => {
 				const liked = voted.includes(item.id);
-				const count = likes[item.id] || fallbackLikes[item.id] || 0;
+				const count = likes[item.id] || 0;
 				return `
 					<article class="moment-card">
 						<span class="moment-rank">${item.title}</span>
@@ -134,6 +131,17 @@
 			}
 		}
 
+		async function loadMomentPhotos() {
+			try {
+				const res = await fetch(`${MOMENT_BACKEND_URL}/moment-photos`);
+				moments = await res.json();
+			} catch (err) {
+				moments = [];
+			}
+
+			loadMomentLikes();
+		}
+
 		async function voteMoment(id) {
 			if (voted.includes(id)) return;
 
@@ -142,11 +150,9 @@
 
 			try {
 				const res = await fetch(`${MOMENT_BACKEND_URL}/moment-likes/${id}/like`, { method: 'POST' });
-				const likes = await res.json();
-				renderMoments(likes);
+				const data = await res.json();
+				renderMoments(data.likes || data);
 			} catch (err) {
-				fallbackLikes[id] = (fallbackLikes[id] || 0) + 1;
-				localStorage.setItem(fallbackLikesKey, JSON.stringify(fallbackLikes));
 				renderMoments();
 			}
 		}
@@ -170,23 +176,41 @@
 			const file = document.getElementById('photoFile').files[0];
 			if (!file) return;
 
+			if (file.size > 3 * 1024 * 1024) {
+				alert('Please upload an image under 3 MB.');
+				return;
+			}
+
 			const reader = new FileReader();
-			reader.onload = () => {
-				localMoments.unshift({
-					id: `local-${Date.now()}`,
-					title,
-					img: reader.result
-				});
-				localStorage.setItem(localMomentsKey, JSON.stringify(localMoments));
-				renderMoments();
-				event.target.reset();
-				hideAddPhotoModal();
+			reader.onload = async () => {
+				try {
+					const res = await fetch(`${MOMENT_BACKEND_URL}/moment-photos`, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							title,
+							imageData: reader.result
+						})
+					});
+					const data = await res.json();
+
+					if (!data.success) {
+						alert(data.msg || 'Photo upload failed.');
+						return;
+					}
+
+					event.target.reset();
+					hideAddPhotoModal();
+					loadMomentPhotos();
+				} catch (err) {
+					alert('Photo upload failed.');
+				}
 			};
 			reader.readAsDataURL(file);
 		});
 
 		renderMoments();
-		loadMomentLikes();
+		loadMomentPhotos();
 	</script>
 </body>
 </html>

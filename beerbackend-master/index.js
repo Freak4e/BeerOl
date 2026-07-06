@@ -4,12 +4,13 @@ const express = require('express');
 const cors = require('cors');
 const { Pool } = require('pg');
 const nodemailer = require('nodemailer');
+const crypto = require('crypto');
 
 // Init app
 const app = express();
 
 // Middleware
-app.use(express.json());
+app.use(express.json({ limit: '6mb' }));
 app.use(cors());
 
 const pool = new Pool({
@@ -56,6 +57,15 @@ async function initDB() {
 		);
 	`);
 
+	await pool.query(`
+		CREATE TABLE IF NOT EXISTS moment_votes (
+			moment_id TEXT NOT NULL,
+			voter_key TEXT NOT NULL,
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+			PRIMARY KEY (moment_id, voter_key)
+		);
+	`);
+
 	console.log("Database ready");
 }
 
@@ -81,6 +91,19 @@ function getMailConfig() {
 			}
 		})
 	};
+}
+
+function getVoterKey(req) {
+	const forwardedFor = req.headers['x-forwarded-for'];
+	const ip = Array.isArray(forwardedFor)
+		? forwardedFor[0]
+		: (forwardedFor || req.ip || req.socket.remoteAddress || '').split(',')[0].trim();
+	const userAgent = req.headers['user-agent'] || '';
+
+	return crypto
+		.createHash('sha256')
+		.update(`${ip}|${userAgent}`)
+		.digest('hex');
 }
 
 // ==================
@@ -142,17 +165,86 @@ app.get('/moment-likes', async (req, res) => {
 	}
 });
 
+app.get('/moment-photos', async (req, res) => {
+	try {
+		const result = await pool.query(
+			'SELECT id, title, image_url FROM moment_photos ORDER BY id DESC'
+		);
+
+		res.json(result.rows.map(row => ({
+			id: `photo-${row.id}`,
+			title: row.title,
+			img: row.image_url
+		})));
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({ error: 'Server error' });
+	}
+});
+
+app.post('/moment-photos', async (req, res) => {
+	try {
+		const { title, imageData } = req.body;
+		const cleanTitle = title && title.trim() ? title.trim() : 'Photo Submission';
+
+		if (!imageData || typeof imageData !== 'string' || !imageData.startsWith('data:image/')) {
+			return res.status(400).json({
+				success: false,
+				msg: 'Please upload a valid image.'
+			});
+		}
+
+		if (imageData.length > 5 * 1024 * 1024) {
+			return res.status(400).json({
+				success: false,
+				msg: 'Image is too large. Please use an image under 3 MB.'
+			});
+		}
+
+		const result = await pool.query(
+			'INSERT INTO moment_photos (title, image_url) VALUES ($1, $2) RETURNING id, title, image_url',
+			[cleanTitle, imageData]
+		);
+		const photo = result.rows[0];
+
+		res.json({
+			success: true,
+			photo: {
+				id: `photo-${photo.id}`,
+				title: photo.title,
+				img: photo.image_url
+			}
+		});
+	} catch (err) {
+		console.error(err);
+		res.status(500).json({
+			success: false,
+			msg: 'Server error.'
+		});
+	}
+});
+
 app.post('/moment-likes/:id/like', async (req, res) => {
 	try {
 		const { id } = req.params;
+		const voterKey = getVoterKey(req);
 
-		await pool.query(
-			`INSERT INTO moment_likes (moment_id, likes)
-			 VALUES ($1, 1)
-			 ON CONFLICT (moment_id)
-			 DO UPDATE SET likes = moment_likes.likes + 1`,
-			[id]
+		const voteResult = await pool.query(
+			`INSERT INTO moment_votes (moment_id, voter_key)
+			 VALUES ($1, $2)
+			 ON CONFLICT (moment_id, voter_key) DO NOTHING`,
+			[id, voterKey]
 		);
+
+		if (voteResult.rowCount === 1) {
+			await pool.query(
+				`INSERT INTO moment_likes (moment_id, likes)
+				 VALUES ($1, 1)
+				 ON CONFLICT (moment_id)
+				 DO UPDATE SET likes = moment_likes.likes + 1`,
+				[id]
+			);
+		}
 
 		const result = await pool.query('SELECT moment_id, likes FROM moment_likes');
 		const likes = {};
@@ -161,7 +253,10 @@ app.post('/moment-likes/:id/like', async (req, res) => {
 			likes[row.moment_id] = row.likes;
 		});
 
-		res.json(likes);
+		res.json({
+			likes,
+			liked: voteResult.rowCount === 1
+		});
 	} catch (err) {
 		console.error(err);
 		res.status(500).json({ error: 'Server error' });

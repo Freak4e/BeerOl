@@ -135,6 +135,7 @@ async function postData(url, data) {
 
 		handleResponseJSON(responseJSON);
 	} catch (err) {
+		console.error('Registration request failed:', err);
 		if (submitBtn) submitBtn.textContent = 'Submit';
 		sendErrorMessage('Could not connect to the server.');
 	}
@@ -156,18 +157,6 @@ function handleResponseJSON(data) {
 
 	sendSuccessMessage(data.msg);
 	document.querySelector('.register-form')?.reset();
-
-	if (!window.emailjs) return;
-
-	const emailData = {
-		first_person: data.firstPerson,
-		teammate: data.teammate,
-		team: data.teamName
-	};
-
-	if (!emailData.first_person || !emailData.teammate || !emailData.team) return;
-
-	emailjs.send('service_fqw8lii', 'template_d44m8x9', emailData).catch(console.error);
 }
 
 function initTagCloud() {
